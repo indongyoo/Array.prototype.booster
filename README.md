@@ -99,8 +99,7 @@ console.timeEnd('map+filter+flatMap');
 // map+filter+flatMap: 1874.667724609375ms
 ```
 
-`flatMap`을 아래와 같이 덮어쓰면 더 빨라집니다 ㅋ
-(크롬이랑 사파리 만드는 애들 제대로 안할꺼야? -_-;; ㅋ)
+`flatMap`을 아래와 같이 덮어쓰면 더 빨라집니다 ㅋ (크롬이랑 사파리 만드는 애들 말야! 제대로 안할꺼야? -_-;; ㅋ)
 
 ```javascript
 Array.prototype.flatMap = function(f) {
