@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test !!</title>
+</head>
+<body>
+
+<script src="./Array.prototype.booster.js"></script>
+
+<script>
+function test(count, f) {
+  while (count--) f();
+}
+
+function range(stop) {
+  var i = -1, res = [];
+  while (++i < stop) res.push(i);
+  return res;
+}
+var list = range(100000);
+
+console.log('before boosting');
+console.time('map');
+test(100, function() {
+  list.map(function(a) {
+    return a + 1;
+  });
+});
+console.timeEnd('map');
+console.time('filter');
+test(100, function() {
+  list.filter(function(a) {
+    return a % 2;
+  });
+});
+console.timeEnd('filter');
+console.time('reduce');
+test(100, function() {
+  list.reduce(function(a, b) { return a + b; });
+  list.reduce(function(a, b) { return a + b; }, 10);
+});
+console.timeEnd('reduce');
+if (list.flatMap) {
+  console.time('flatMap');
+  test(100, function() {
+    list.flatMap(function(a, i) {
+      return [a, i];
+    });
+  });
+  console.timeEnd('flatMap');
+
+  console.time('map+filter');
+  test(100, function() {
+    list.map(function(a) {
+      return a + 1;
+    }).map(function(a) {
+      return a + 1;
+    }).map(function(a) {
+      return a + 1;
+    }).map(function(a) {
+      return a + 1;
+    }).filter(function(a) {
+      return a % 2;
+    });
+  });
+  console.timeEnd('map+filter');
+
+  console.time('map+filter+flatMap');
+  test(100, function() {
+    list.flatMap(a => [a].map(function(a) {
+      return a + 1;
+    }).map(function(a) {
+      return a + 1;
+    }).map(function(a) {
+      return a + 1;
+    }).map(function(a) {
+      return a + 1;
+    }).filter(function(a) {
+      return a % 2;
+    }));
+  });
+  console.timeEnd('map+filter+flatMap');
+}
+
+booster();
+
+console.log('boosting!!!');
+console.time('map');
+test(100, function() {
+  list.map(function(a) {
+    return a + 1;
+  });
+});
+console.timeEnd('map');
+console.time('filter');
+test(100, function() {
+  list.filter(function(a) {
+    return a % 2;
+  });
+});
+console.timeEnd('filter');
+console.time('reduce');
+test(100, function() {
+  list.reduce(function(a, b) { return a + b; });
+  list.reduce(function(a, b) { return a + b; }, 10);
+});
+console.timeEnd('reduce');
+
+console.time('flatMap');
+test(100, function() {
+  list.flatMap(function(a, i) {
+    return [a, i];
+  });
+});
+console.timeEnd('flatMap');
+console.time('map+filter');
+test(100, function() {
+  list.map(function(a) {
+    return a + 1;
+  }).map(function(a) {
+    return a + 1;
+  }).map(function(a) {
+    return a + 1;
+  }).map(function(a) {
+    return a + 1;
+  }).filter(function(a) {
+    return a % 2;
+  });
+});
+console.timeEnd('map+filter');
+console.time('map+filter+flatMap');
+test(100, function() {
+  list.flatMap(a => [a].map(function(a) {
+    return a + 1;
+  }).map(function(a) {
+    return a + 1;
+  }).map(function(a) {
+    return a + 1;
+  }).map(function(a) {
+    return a + 1;
+  }).filter(function(a) {
+    return a % 2;
+  }));
+});
+console.timeEnd('map+filter+flatMap');
+
+
+</script>
+
+</body>
+</html>
