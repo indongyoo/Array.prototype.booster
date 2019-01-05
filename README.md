@@ -21,7 +21,7 @@ console.log(a == Array.prototype.map);
 
 ## 크롬에서 테스트 결과
 
-[테스트 코드](https://github.com/indongyoo/Array.prototype.booster/blob/master/test.html)
+[테스트 코드 보기](https://github.com/indongyoo/Array.prototype.booster/blob/master/test.html)
 
 ```
 before boosting
