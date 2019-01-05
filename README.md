@@ -105,3 +105,4 @@ console.timeEnd('map+filter+flatMap');
 ```
 
 트릭은 트릭일뿐. 너무 진지해지면 좋지 않아요.
+아! 실제로 코드는 다 정상동작합니다.
