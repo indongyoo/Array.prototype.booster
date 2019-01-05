@@ -91,4 +91,4 @@ console.timeEnd('map+filter+flatMap');
 // map+filter+flatMap: 507.843994140625ms
 ```
 
-트릭은 트릭일뿐이니, 너무 진지해지면 좋지 않아요.
+트릭은 트릭일뿐. 너무 진지해지면 좋지 않아요.
