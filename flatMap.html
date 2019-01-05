@@ -12,13 +12,12 @@
 function test(count, f) {
   while (count--) f();
 }
-function range(stop) {
-  var i = -1, res = [];
-  while (++i < stop) res.push(i);
-  return res;
+function *range(stop) {
+  var i = -1;
+  while (++i < stop) yield i;
 }
 
-const list = range(10000000);
+const list = [...range(10000000)];
 
 const f = list => list
   .map(a => a + 1)
