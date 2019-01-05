@@ -91,4 +91,4 @@ console.timeEnd('map+filter+flatMap');
 // map+filter+flatMap: 507.843994140625ms
 ```
 
-근데 `booter`를 가동하면 그냥 map filter 만으로도 더 빨라진다는 것은 함정.
+트릭은 트릭일뿐이니, 너무 진지해지면 좋지 않아요.
