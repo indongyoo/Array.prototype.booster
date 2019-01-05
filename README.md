@@ -6,6 +6,19 @@
 - 구버전 IE에선 polyfill
 - IE9에선 부스팅 효과 극대화 (아마도)
 
+## 사용법
+
+```javascript
+var a = Array.prototype.map;
+console.log(a == Array.prototype.map);
+// true
+booster();
+console.log(a == Array.prototype.map);
+// false
+[1, 2, 3].map(a => a + 1);
+// [2, 3, 4]
+```
+
 ## 크롬에서 테스트 결과
 
 ```
