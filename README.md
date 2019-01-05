@@ -21,6 +21,8 @@ console.log(a == Array.prototype.map);
 
 ## 크롬에서 테스트 결과
 
+[테스트 코드](https://github.com/indongyoo/Array.prototype.booster/blob/master/test.html)
+
 ```
 before boosting
 map: 1251.281982421875ms
@@ -31,12 +33,12 @@ map+filter: 5091.51416015625ms
 map+filter+flatMap: 2067.625ms
 
 boosting!!!
-map: 160.205322265625ms
-filter: 128.919189453125ms
+map: 160.205322265625ms (와우 7.8배 빨라요!)
+filter: 128.919189453125ms (미세하지만 그래도!)
 reduce: 241.978271484375ms
-flatMap: 520.212890625ms
+flatMap: 520.212890625ms (와우! 7배 빨라요!)
 map+filter: 1160.1533203125ms
-map+filter+flatMap: 747.23486328125ms
+map+filter+flatMap: 747.23486328125ms (와우!)
 ```
 
 ## flatMap 활용을 통한 Big Size Array 다루기!
