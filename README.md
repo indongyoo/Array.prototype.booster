@@ -41,6 +41,21 @@ map+filter: 1160.1533203125ms
 map+filter+flatMap: 747.23486328125ms (와우!)
 ```
 
+## 어떻게?
+
+```javascript
+Array.prototype.map = function(f) {
+  var i = -1, l = this.length, res = Array(l);
+  while (++i < l) res[i] = f(this[i], i, this);
+  return res;
+};
+Array.prototype.filter = function(f) {
+  var i = -1, l = this.length, res = [], a;
+  while (++i < l) f(a = this[i], i, this) && (res[res.length] = a);
+  return res;
+};
+```
+
 ## flatMap 활용을 통한 Big Size Array 다루기!
 
 큰 사이즈의 Array를 다룰 때, 같은 함수를 작성한 후 `magic`을 감싸주기만하면 빨라지고!

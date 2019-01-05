@@ -15,16 +15,13 @@ function booster() {
   p.filter = bfilter; function bfilter(f) {
     if (this.length < bpoint) return filter.call(this, f);
     var i = -1, l = this.length, res = [], a;
-    while (++i < l) if (f(a = this[i], i, this)) res[res.length] = a;
+    while (++i < l) f(a = this[i], i, this) && (res[res.length] = a);
     return res;
   }
   p.reduce = function(f, acc) {
     if (this.length < bpoint) return reduce.call(this, f, acc);
     var i = -1, l = this.length;
-    if (acc === undefined) {
-      i = 0;
-      acc = this[i];
-    }
+    if (acc === undefined) { i = 0; acc = this[i]; }
     while (++i < l) acc = f(acc, this[i], i, list);
     return acc;
   };
