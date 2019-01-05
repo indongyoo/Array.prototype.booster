@@ -28,6 +28,8 @@ map+filter+flatMap: 747.23486328125ms
 
 ## flatMap 활용을 통한 Big Size Array 다루기!
 
+큰 사이즈의 Array를 다룰 때, 같은 함수를 작성한 후 `magic`을 감싸주기만하면 빨라지고!
+
 ```javascript
 function test(count, f) {
   while (count--) f();
@@ -65,21 +67,28 @@ test(1, function() {
 });
 console.timeEnd('map+filter+flatMap');
 // map+filter+flatMap: 1874.667724609375ms
+```
 
-booster();
+`flatMap`을 아래와 같이 덮어쓰면 더 빨라집니다 ㅋ
+
+```javascript
+Array.prototype.flatMap = function(f) {
+  var i = -1, tl = this.length, res = [], b, j, bl;
+  while (++i < tl) {
+    if (Array.isArray(b = f(this[i], i, this))) {
+      j = -1, bl = b.length;
+      while (++j < bl) res.push(b[j]);
+    } else res.push(b);
+  }
+  return res;
+};
 
 console.time('map+filter+flatMap');
 test(1, function() {
   f2(list);
 });
 console.timeEnd('map+filter+flatMap');
-// map+filter+flatMap: 516.843994140625ms
+// map+filter+flatMap: 507.843994140625ms
 ```
 
-
-
-
-
-
-
-
+근데 `booter`를 가동하면 그냥 map filter 만으로도 더 빨라진다는 것은 함정.

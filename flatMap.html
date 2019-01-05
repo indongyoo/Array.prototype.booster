@@ -45,16 +45,37 @@ test(1, function() {
 });
 console.timeEnd('map+filter+flatMap');
 // map+filter+flatMap: 1874.667724609375ms
+</script>
 
-booster();
+<script>
+Array.prototype.flatMap = function(f) {
+  var i = -1, tl = this.length, res = [], b, j, bl;
+  while (++i < tl) {
+    if (Array.isArray(b = f(this[i], i, this))) {
+      j = -1, bl = b.length;
+      while (++j < bl) res.push(b[j]);
+    } else res.push(b);
+  }
+  return res;
+};
 
 console.time('map+filter+flatMap');
 test(1, function() {
   f2(list);
 });
 console.timeEnd('map+filter+flatMap');
-// map+filter+flatMap: 516.843994140625ms
+// map+filter+flatMap: 507.843994140625ms
 
+</script>
+
+<script>
+booster();
+console.time('map+filter');
+test(1, function() {
+  f(list);
+});
+console.timeEnd('map+filter');
+// map+filter: 334.0751953125ms
 </script>
 
 </body>
